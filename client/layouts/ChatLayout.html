@@ -1,0 +1,9 @@
+<template name="ChatLayout">
+  <h1>{{chat.name}}</h1>
+  <ul class="media-list">
+    <!-- message template -->
+    {{#each messages}}
+      {{> message}}
+    {{/each}}
+  </ul>
+</template>
