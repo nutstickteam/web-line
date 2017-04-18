@@ -1,15 +1,23 @@
 <template name="MainLayout">
   {{> sidebar}}
-  <main class="container-fluid">
+  <main class="container-fluid main">
     {{> Template.dynamic template=main}}
   </main>
 </template>
 
 <template name="Home">
-  <div class="row">
+  <div class="col-md-4 chat-list-wrapper">
+    <ul>
+      <li>
+        <a>Chat 1</a>
+      </li>
+      <li>
+        <a>Chat 2</a>
+      </li>
+    </ul>
+  </div>
+  <div class="col-md-8">
     <h3 class="text-center">LINE</h3>
     <h5 class="text-center text-muted">Sign in to join!</h5>
-    <div class="col-md-12">
-    </div>
-  </div>
+  </div>  
 </template>

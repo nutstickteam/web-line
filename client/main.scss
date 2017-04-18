@@ -1,11 +1,24 @@
+html, body {
+  height: 100vh;
+  overflow: hidden;
+}
+
 body #__blaze-root {
   background-color: #111;
   flex-direction: row;
   display: flex;
+  height: 100vh;
+}
+
+.main {
+  flex: 1;
+  width: 100%;
+  padding: 0;
 }
 
 .sidebar {
-  height: 100vh;
+  min-height: 100vh;
+  height: 100%;
   width: 5rem;
   list-style: none;
   background-color: #3F4663;
@@ -45,4 +58,10 @@ body #__blaze-root {
       }
     }
   }
+}
+
+.chat-list-wrapper {
+  background-color: #FFF;
+  min-height: 100vh;
+  height: 100%;
 }

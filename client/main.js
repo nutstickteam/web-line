@@ -1,3 +1,3 @@
 import './main.scss';
 import './partials/sidebar.js';
-import '../imports/startup/accounts-config.js';
+import '../imports/startup/accout-config';
