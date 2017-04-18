@@ -22,8 +22,15 @@
         color: gray;
       }
 
+      .badge {
+        background-color: #c13a3a;
+      }
       &:hover {
         background-color: #f6f7fc
+      }
+
+      &:active {
+        background-color: #edeef3
       }
     }
 }
