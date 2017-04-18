@@ -6,18 +6,10 @@
 </template>
 
 <template name="Home">
-  <div class="col-md-4 chat-list-wrapper">
-    <ul>
-      <li>
-        <a>Chat 1</a>
-      </li>
-      <li>
-        <a>Chat 2</a>
-      </li>
-    </ul>
+  <div class="col-md-4">
+    {{> chatlist}}
   </div>
   <div class="col-md-8">
-    <h3 class="text-center">LINE</h3>
-    <h5 class="text-center text-muted">Sign in to join!</h5>
+    {{> chat}}
   </div>  
 </template>
