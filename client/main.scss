@@ -1,0 +1,67 @@
+html, body {
+  height: 100vh;
+  overflow: hidden;
+}
+
+body #__blaze-root {
+  background-color: #111;
+  flex-direction: row;
+  display: flex;
+  height: 100vh;
+}
+
+.main {
+  flex: 1;
+  width: 100%;
+  padding: 0;
+}
+
+.sidebar {
+  min-height: 100vh;
+  height: 100%;
+  width: 5rem;
+  list-style: none;
+  background-color: #3F4663;
+  padding: 0;
+
+  -webkit-transition: all .1s ease-out; /* Safari */
+  transition: all .1s ease-out;
+
+  &.expand {
+    width: 200px;
+
+    > .menu {
+      > a::after {
+        content: attr(data-text);
+        padding-left: 1.5rem;
+      }
+    }
+  }
+
+  > .menu {
+    overflow: hidden;
+    width: 100%;
+
+    > a {
+      display: block;
+      width: 100%;
+      padding: 1.5rem;
+      line-height: 2rem;
+      font-size: 2rem;
+      color: #6C7A9A;
+      white-space: nowrap;
+      text-decoration: none;
+
+      &.active,
+      &:hover {
+        color: #FFF;
+      }
+    }
+  }
+}
+
+.chat-list-wrapper {
+  background-color: #FFF;
+  min-height: 100vh;
+  height: 100%;
+}
