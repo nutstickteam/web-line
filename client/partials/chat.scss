@@ -1,15 +1,27 @@
+$height_title: 80px;
+$height_answer: 80px;
 
 .chat {
+    position: absolute;
+    width: 100%;
     background-color: white;
-    height: 75vh;
-    overflow-y: auto;
-    padding: 15px 0px;
-    padding-top: 10px;
+    height: 100vh;
+    padding-top: $height_title;
+    padding-bottom: $height_answer;
     border-left: #ececec solid 1.5px; 
 }
 
+.chat_content{
+    height: 100%;
+    padding: 15px 0px;
+    padding-top: 10px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
 .chat-title{
-    height: 80px;
+    width: 100%;
+    position: absolute;
+    height: $height_title;
     font-size: 150%;
     padding: 10px 25px;
     background-color: #ededf2;
@@ -58,7 +70,7 @@
     position: fixed;
     border-top: #ececec solid 1.5px; 
     border-left: #ececec solid 1.5px; 
-    height: 80px;
+    height: $height_answer;
     bottom: 0;
     width: 100%;
 }
