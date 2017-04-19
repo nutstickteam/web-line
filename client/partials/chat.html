@@ -1,12 +1,20 @@
 <template name="chat">
+  <div class="row chat-title">
+    <img src="http://7bna.net/images/picture/picture-37.jpg" width="60" height="60" class="img-circle">
+    DisProject
+  </div>
   <div class="row chat">
-    <div class="col-md-12 chat-title">
-      <img src="http://7bna.net/images/picture/picture-37.jpg" width="60" height="60" class="img-circle">
-      DisProject
-    </div>
     <div class="col-md-12">
-      {{> recieveText}} {{> sendText}} {{> recieveText}}
+      {{> recieveText}} {{> sendText}} {{> recieveText}} {{> recieveText}} {{> sendText}}
     </div>
+  </div>
+  <div class="row answer-input">
+      <div class="col-md-12 answer">
+        <form class="form-inline">
+          <input class="text-input" type="text" name="text" placeholder="Please enter a message">
+          <button class="btn sent-button" type="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+        </form>
+      </div>
   </div>
 </template>
 
