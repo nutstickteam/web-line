@@ -1,4 +1,45 @@
 <template name="chat">
-  <h3 class="text-center">LINE</h3>
-  <h5 class="text-center text-muted">Sign in to join!</h5>
+  <div class="row chat">
+    <div class="col-md-12 chat-title">
+      <img src="http://7bna.net/images/picture/picture-37.jpg" width="60" height="60" class="img-circle">
+      DisProject
+    </div>
+    <div class="col-md-12">
+      {{> recieveText}} {{> sendText}} {{> recieveText}}
+    </div>
+  </div>
+</template>
+
+<template name="recieveText">
+  <div class="row com-text">
+    <div class="col-md-1">
+      <img src="http://7bna.net/images/picture/picture-37.jpg" width="40" height="40" class="img-circle">
+    </div>
+    <div class="col-md-11">
+      <div class="title">
+        Pang
+      </div>
+      <div class="content">
+        <span class="textblock">asd asdfsadfwef asdfsdf</span>
+        <span class="time">19.50 PM</span>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="sendText">
+  <div class="row com-text send-text">
+    <div class="col-md-11">
+      <div class="title">
+        James
+      </div>
+      <div class="content">
+        <span class="time">19.51 PM</span>
+        <span class="textblock">asd asdfsadfwef asdfsdf</span>
+      </div>
+    </div>
+    <div class="col-md-1">
+      <img src="http://kingofwallpapers.com/picture/picture-018.jpg" width="40" height="40" class="img-circle">
+    </div>
+  </div>
 </template>
