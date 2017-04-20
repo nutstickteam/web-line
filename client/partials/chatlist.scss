@@ -1,36 +1,71 @@
+.loading {
+  width: 100%;
+  color: #aaa;
+  text-align: center;
+  font-style: italic;
+  font-size: 16px;
+  padding: 12px;
+}
+
 .chat-list-wrapper {
   background-color: #FFF;
   min-height: 100vh;
+  float: left;
+  width: 100%;
   height: 100%;
-    >.row {
-      margin: 0px;
-      padding: 10px 0px;
-      .col-xs-3 {
-        text-align: center;
-      }
+  border-right: #ececec solid 1.5px;
 
-      .row {
-        padding-top: 3px;
-      }
+  > .header {
+    font-size: 22px;
+    font-weight: 600;
+    padding: 1.5rem 2rem;
+  }
 
-      .col-xs-5 {
-        text-align: right;
-        padding-right: 25px;
-      }
+  > ul.chat-list {
+    list-style: none;
+    padding: 0px;
 
-      .text {
-        color: gray;
-      }
+    > li {
+      > a {
+        display: block;
+        margin: 0px;
+        padding: 12px 0;
+        &:hover {
+          background-color: #BBB;
+        }
 
-      .badge {
-        background-color: #c13a3a;
-      }
-      &:hover {
-        background-color: #f6f7fc
-      }
+        > .avatar-wrapper {
+          text-align: center;
+        }
 
-      &:active {
-        background-color: #edeef3
+        .room-name {
+          color: #111;
+          font-size: 16px;
+          font-weight: 500;
+          margin: 0;
+        }
+
+        .row {
+          padding-top: 3px;
+        }
+
+        .col-xs-5 {
+          text-align: right;
+          padding-right: 25px;
+        }
+
+        .text {
+          color: gray;
+        }
+
+        .badge {
+          background-color: #0bc060;
+        }
+
+        &:active {
+          background-color: #BBB; 
+        }
       }
     }
+  }
 }

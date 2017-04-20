@@ -1,20 +1,35 @@
 <template name="chatlist">
   <div class="chat-list-wrapper">
-      {{> oneChat}}
-      {{> oneChat}}
+    <h4 class="header">Chats</h4>
+    <ul class="chat-list">
+      {{#if Template.subscriptionsReady}}
+        {{#each room in rooms}}
+          {{> ChatItem room=room}}
+        {{/each}}
+      {{else}}
+        <li>
+          <a class="row">
+            <div class="col-xd-12 loading">
+              Loading...
+            </div>
+          </a>
+        </li>
+      {{/if}}
+    </ul>
   </div>
 </template>
 
-<template name="oneChat">
-    <div class="row">
-      <div class="col-xs-3">        
+<template name="ChatItem">
+  <li>
+    <a class="row" href="{{room._id}}">
+      <div class="avatar-wrapper col-xs-3">        
         <img src="http://7bna.net/images/picture/picture-37.jpg" width="50" height="50" class="img-circle"> 
       </div>
       <div class="col-xs-4">
         <div class="row">
-          <b>
-            DisProject
-          </b>
+          <p class="room-name">
+            {{room.name}}
+          </p>
         </div>
         <div class="row text">
             งานเยอะจัง
@@ -24,5 +39,6 @@
         11.29 PM<br>
         <span class="badge">14</span>
       </div>
-    </div>
+    </a>
+  </li>
 </template>
