@@ -2,11 +2,26 @@
   <div class="chat-wrapper">
     <div class="chat-title">
       <img src="http://7bna.net/images/picture/picture-37.jpg" width="60" height="60" class="img-circle">
-      DisProject
+      {{#if Template.subscriptionsReady}}
+        {{room.name}}
+      {{/if}}
     </div>
     <div class="chat">
       <div class="col-md-12">
-        {{> recieveText}} {{> sendText}} {{> recieveText}} {{> recieveText}} {{> sendText}}{{> sendText}}{{> sendText}}{{> sendText}}{{> sendText}}{{> sendText}}{{> sendText}}
+        {{#if Template.subscriptionsReady}}
+          {{#each message in messages}}
+            {{#if message.isMe}}
+              {{> sendText}}
+            {{else}}
+              {{> recieveText}}
+            {{/if}}
+          {{/each}}
+        {{else}}
+          <div class="col-xd-12 loading">
+            Loading...
+          </div>
+        {{/if}}
+        <!--{{> recieveText}} {{> sendText}} {{> recieveText}} {{> recieveText}} {{> sendText}}{{> sendText}}{{> sendText}}{{> sendText}}{{> sendText}}{{> sendText}}{{> sendText}}-->
       </div>
     </div>
     <div class="answer-input">

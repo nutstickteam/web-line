@@ -45,11 +45,10 @@ Meteor.publish('rooms', function() {
 });
 
 Meteor.publish('roomAndMessages', function (roomId) {
-  check(roomId, String);
   return [
     Rooms.find({ _id: roomId }, {
       fields: { secretInfo: 0 }
     }),
-    Messages.find({ roomId })
+    Messages.find({ room: roomId })
   ];
 });
