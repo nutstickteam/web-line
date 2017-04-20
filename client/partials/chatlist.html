@@ -7,7 +7,13 @@
           {{> ChatItem room=room}}
         {{/each}}
       {{else}}
-        <p>Loading...</p>
+        <li>
+          <a class="row">
+            <div class="col-xd-12 loading">
+              Loading...
+            </div>
+          </a>
+        </li>
       {{/if}}
     </ul>
   </div>

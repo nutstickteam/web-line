@@ -5,7 +5,6 @@ import './chat.scss';
 import './chat.html';
 
 Template.chat.onCreated(function chatOnCreated() {
-  console.log(Template.currentData());
 });
 
 Template.chat.helpers({
