@@ -1,0 +1,99 @@
+
+.chat {
+    background-color: white;
+    height: 75vh;
+    overflow-y: auto;
+    padding: 15px 0px;
+    padding-top: 10px;
+    border-left: #ececec solid 1.5px; 
+}
+
+.chat-title{
+    height: 80px;
+    font-size: 150%;
+    padding: 10px 25px;
+    background-color: #ededf2;
+    img{
+        margin-right: 15px;
+    }
+}
+
+.title {
+    color: gray;
+}
+
+.content {
+    margin-top: 5px;
+    .textblock {
+        padding: 5px;
+        background-color: rgb(237, 238, 243);
+    }
+    .time {
+        font-size: 75%;
+        color: gray;
+    }
+}
+
+.com-text {
+    margin: 0px;
+    img {
+        margin-top: 7px;
+    }
+    .col-md-11 {
+        padding: 0px;
+    }
+}
+
+
+.send-text {
+    div {
+        text-align: right;
+        .textblock {
+            background-color: #ffe0e0;
+        }
+    }
+}
+
+.answer-input{
+    position: fixed;
+    border-top: #ececec solid 1.5px; 
+    border-left: #ececec solid 1.5px; 
+    height: 80px;
+    bottom: 0;
+    width: 100%;
+}
+
+.answer{
+    padding: 0px;
+    height: 100%;
+}
+
+.form-inline {
+    height: 100%;
+}
+
+.text-input{
+    width: 59% !important; 
+    height: 100%;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    border: 0px;
+}
+
+.sent-button{
+    height: 100%;
+    width: 5.1%;
+    margin-left: -5px;
+    vertical-align: top; 
+    border-radius: 0px;
+    background-color: white;
+    border-color: white;
+
+    &:hover {
+        background-color: #ececec;
+        border-color: #ececec;
+    }
+}

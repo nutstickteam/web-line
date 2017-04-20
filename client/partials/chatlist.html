@@ -1,12 +1,28 @@
 <template name="chatlist">
-  <div class="chat-list-wrapper red">
-    <ul class="red">
-      <li>
-        <a>Chat 1</a>
-      </li>
-      <li>
-        <a>Chat 2</a>
-      </li>
-    </ul>
+  <div class="chat-list-wrapper">
+      {{> oneChat}}
+      {{> oneChat}}
   </div>
+</template>
+
+<template name="oneChat">
+    <div class="row">
+      <div class="col-xs-3">        
+        <img src="http://7bna.net/images/picture/picture-37.jpg" width="50" height="50" class="img-circle"> 
+      </div>
+      <div class="col-xs-4">
+        <div class="row">
+          <b>
+            DisProject
+          </b>
+        </div>
+        <div class="row text">
+            งานเยอะจัง
+        </div>
+      </div>
+      <div class="col-xs-5 text">
+        11.29 PM<br>
+        <span class="badge">14</span>
+      </div>
+    </div>
 </template>

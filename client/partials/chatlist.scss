@@ -2,12 +2,35 @@
   background-color: #FFF;
   min-height: 100vh;
   height: 100%;
+    >.row {
+      margin: 0px;
+      padding: 10px 0px;
+      .col-xs-3 {
+        text-align: center;
+      }
 
-  &.red {
-    background: blue;
-  }
+      .row {
+        padding-top: 3px;
+      }
 
-  > .red {
-    background: red;
-  }
+      .col-xs-5 {
+        text-align: right;
+        padding-right: 25px;
+      }
+
+      .text {
+        color: gray;
+      }
+
+      .badge {
+        background-color: #c13a3a;
+      }
+      &:hover {
+        background-color: #f6f7fc
+      }
+
+      &:active {
+        background-color: #edeef3
+      }
+    }
 }
