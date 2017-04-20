@@ -1,12 +1,15 @@
 <template name="chatlist">
-  <div class="chat-list-wrapper red">
-    <ul class="red">
-      <li>
-        <a>Chat 1</a>
-      </li>
-      <li>
-        <a>Chat 2</a>
-      </li>
+  <div class="chat-list-wrapper">
+    <ul class="">
+      {{#if Template.subscriptionsReady}}
+        {{#each room in rooms}}
+          <li>
+            <a>{{room.name}}</a>
+          </li>
+        {{/each}}
+      {{else}}
+          <p>Loading...</p>
+      {{/if}}
     </ul>
   </div>
 </template>
