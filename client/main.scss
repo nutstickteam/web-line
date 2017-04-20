@@ -1,6 +1,7 @@
 html, body {
   height: 100vh;
   overflow: hidden;
+  font-family: "Segoe UIt", "Segoe UI", Arial, sans-serif;
 }
 
 body #__blaze-root {
@@ -17,6 +18,10 @@ body #__blaze-root {
 
   .col-md-4 {
     padding: 0px;
+  }
+  .col-md-8 {
+    padding: 0px;
+    height: 100%;
   }
 }
 
