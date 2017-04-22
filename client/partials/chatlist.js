@@ -20,15 +20,19 @@ Template.chatlist.helpers({
     return Template.instance().expand.get();
   },
   rooms() {
-    var rooms = Participants.find({ user: Meteor.userId() }, { sort: { lastUpdate: -1 } }).fetch();
+    const user = this.userId || Meteor.userId();
+    var rooms = Participants.find({ user: user }, {
+      fields: { 'room': 1 },
+      sort: { lastUpdate: -1 }
+    }).fetch();
+
     return rooms.map((r) => {
-      var room = Rooms.findOne({ _id: r.room }, {
-        fields: { secretInfo: 0 }
-      });
-      var lastest = Messages.findOne({ room: r.room }, {
-        fields: { body: 1, owner: 1, createAt: 1 },
-        sort: { timestamp: -1 }
-      });
+      var room = Rooms.findOne({ _id: r.room });
+      var lastest = Messages.findOne({ room: r.room });
+      if (lastest && lastest.serverMsg) {
+        var user = Meteor.users.findOne({ _id: lastest.body.userId }, {fields: {username: 1}});
+        lastest.body = user.username + ' joins chat.';
+      }
       return {
         ...room,
         lastest,

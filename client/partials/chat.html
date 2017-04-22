@@ -10,10 +10,18 @@
       <div class="col-md-12">
         {{#if Template.subscriptionsReady}}
           {{#each message in messages}}
-            {{#if message.isMe}}
-              {{> sendText}}
+            {{#if message.serverMsg}}
+              {{> serverText message=message}}
             {{else}}
-              {{> recieveText}}
+              {{#if message.isMe}}
+                {{> sendText message=message}}
+              {{else}}
+                {{> recieveText message=message}}
+              {{/if}}
+            {{/if}}
+
+            {{#if eq message._id lastRead}}
+              <div class="last-read"></div>
             {{/if}}
           {{/each}}
         {{else}}
@@ -26,7 +34,7 @@
     </div>
     <div class="answer-input">
       <div class="col-md-12 answer">
-        <form class="form-inline">
+        <form class="form-inline send-form">
           <input class="text-input" type="text" name="text" placeholder="Please enter a message">
           <button class="btn sent-button" type="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
         </form>
@@ -42,11 +50,11 @@
     </div>
     <div class="message-wrapper">
       <div class="title">
-        Pang
+        {{message.owner}}
       </div>
       <div class="content">
-        <span class="textblock">asd asdfsadfwef asdfsdf</span>
-        <span class="time">19.50 PM</span>
+        <span class="textblock">{{message.body}}</span>
+        <span class="time">{{formatDate message.createAt}}</span>
       </div>
     </div>
   </div>
@@ -59,12 +67,20 @@
     </div>
     <div class="message-wrapper">
       <div class="title">
-        James
+        {{message.owner}}
       </div>
       <div class="content">
-        <span class="time">19.51 PM</span>
-        <span class="textblock">asd asdfsadfwef asdfsdf</span>
+        <span class="time">{{formatDate message.createAt}}</span>
+        <span class="textblock">{{message.body}}</span>
       </div>
     </div>
+  </div>
+</template>
+
+<template name="serverText">
+  <div class="server-text">
+    <span class="">
+      {{message.body}}
+    </span>
   </div>
 </template>

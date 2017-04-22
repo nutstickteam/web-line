@@ -32,11 +32,15 @@
           </p>
         </div>
         <div class="row text">
-            งานเยอะจัง
+          {{#if room.lastest.serverMsg}}
+            {{room.lastest.body}}
+          {{else}}
+            {{room.lastest.owner}}: {{room.lastest.body}}
+          {{/if}}
         </div>
       </div>
       <div class="col-xs-5 text">
-        11.29 PM<br>
+        {{formatDate room.lastest.createAt}}<br>
         <span class="badge">14</span>
       </div>
     </a>
