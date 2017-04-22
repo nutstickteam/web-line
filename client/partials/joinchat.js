@@ -21,6 +21,9 @@ Template.joinchat.events({
     const target = event.target;
     const text = target.group.value;
 
+    if (text === '')
+      return;
+    console.log('p')
     Participants.insert({
 			user: Meteor.userId(),
 			room: text,

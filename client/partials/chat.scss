@@ -161,3 +161,12 @@
     }
   }
 }
+
+.server-text {
+  text-align: center;
+  height: 5rem;
+  > span {
+    padding: 1rem;
+    background-color: #ececec;
+  }
+}

@@ -32,7 +32,11 @@
           </p>
         </div>
         <div class="row text">
+          {{#if room.lastest.serverMsg}}
+            {{room.lastest.body}}
+          {{else}}
             {{room.lastest.owner}}: {{room.lastest.body}}
+          {{/if}}
         </div>
       </div>
       <div class="col-xs-5 text">

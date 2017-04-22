@@ -20,13 +20,30 @@ scrollToBottom = function scrollToBottom (duration) {
 Template.chat.onCreated(function chatOnCreated() {
   var self = this;
   self.autorun(function() {
+    this.lastRead = new ReactiveVar(null);
     self.subscribe('roomAndMessages', self.data.id);
+    // console.log(Meteor.userId(),self.data.id,
+    //   Participants.findOne({ user: Meteor.userId(), room: self.data.id })
+    // )
+    // self.lastRead = new ReactiveVar(
+    //   Participants.findOne({ user: Meteor.userId(), room: self.data.id })
+    //     .lastRead
+    // );
   });
 });
 
+Template.chat.onRendered(() => {
+});
+
 Template.chat.helpers({
-  participant() {
-    return Participants.findOne({ user: Meteor.userId(), room: Template.instance().data.id })
+  lastRead() {
+    const lastReadState = Template.instance().lastRead.get();
+    if (lastReadState) {
+      return lastReadState
+    }
+    const lastRead = Participants.findOne({ user: Meteor.userId(), room: Template.instance().data.id }).lastRead;
+    Template.instance().lastRead.set(lastRead);
+    return lastRead;
   },
   room() {
     return Rooms.findOne({ _id: Template.instance().data.id }, {
@@ -34,7 +51,17 @@ Template.chat.helpers({
     });
   },
   messages() {
-    const m = Messages.find({ room: Template.instance().data.id }).fetch().map((m) => ({
+    const m = Messages.find({ room: Template.instance().data.id }, {sort: {createAt: 1}}).fetch().map((m) => {
+      if (m.serverMsg) {
+        const username = Meteor.users.findOne({_id: m.body.userId}, {fields: {username: 1}}).username;
+        // Meteor.users.findOne({_id: m.body.userId}, {fields: {username: 1}}).username;
+        return {
+          ...m,
+          body: `${username} ${m.body.action ? 'joins' : 'leaves'} chat.`,
+        };
+      }
+      return m;
+    }).map((m) => (m.serverMsg ? m : {
       ...m,
       isMe: m.ownerId === Meteor.userId(),
     }));
