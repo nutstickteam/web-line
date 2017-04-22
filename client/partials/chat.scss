@@ -1,3 +1,18 @@
+.last-read {
+  border-top: 8px solid #dbdbdb;
+  height: 100%;
+  position: relative;
+  &::before {
+    content: '...';
+    position: absolute;
+    top: -19px;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    font-size: 8px;
+  }
+}
+
 .chat-wrapper {
   display: flex;
   flex-direction: column;
@@ -43,8 +58,8 @@
       text-align: right;
       > .content {
         > .time {
-          right: auto;
-          left: -50px;
+          right: calc(100% + 8px);
+          left: auto;
         }
         > .textblock {
           background-color: #abf18c;
@@ -85,7 +100,8 @@
       > .time {
         position: absolute;
         top: 0px;
-        right: -50px;
+        left: calc(100% + 8px);
+        white-space: nowrap;
         font-size: 75%;
         color: gray;
         display: block;

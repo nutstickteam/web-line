@@ -24,7 +24,20 @@ Meteor.startup(() => {
       /* user and doc checks ,
       return true to allow insert */
       return true; 
-    }
+    },
+    'update': function (userId,doc) {
+      /* user and doc checks ,
+      return true to allow insert */
+      return true; 
+    },
+  });
+
+  Messages.allow({
+    'insert': function (userId, doc) {
+      /* user and doc checks ,
+      return true to allow insert */
+      return doc.ownerId === userId;
+    },
   });
 });
 
@@ -49,6 +62,7 @@ Meteor.publish('roomAndMessages', function (roomId) {
     Rooms.find({ _id: roomId }, {
       fields: { secretInfo: 0 }
     }),
-    Messages.find({ room: roomId })
+    Messages.find({ room: roomId }),
+    Participants.find({ user: this.userId, room: roomId }),
   ];
 });

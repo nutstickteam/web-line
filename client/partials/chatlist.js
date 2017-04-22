@@ -27,8 +27,9 @@ Template.chatlist.helpers({
       });
       var lastest = Messages.findOne({ room: r.room }, {
         fields: { body: 1, owner: 1, createAt: 1 },
-        sort: { timestamp: -1 }
+        sort: { createAt: -1 }
       });
+      console.log(lastest)
       return {
         ...room,
         lastest,
