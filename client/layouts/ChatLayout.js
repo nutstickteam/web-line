@@ -6,12 +6,11 @@ import { Messages } from '../../imports/api/messages.js';
 Template.ChatLayout.onCreated(function chatOnCreated() {
   var self = this;
   self.autorun(function() {
-    self.subscribe('chats');
+    var id = FlowRouter.getParam('id');
+    self.subscribe('roomAndMessages', id);
   });
 
-  var id = FlowRouter.getParam('id');
   this.chat = new ReactiveVar(Chats.find({_id: id}));
-
 });
 
 Template.ChatLayout.helpers({

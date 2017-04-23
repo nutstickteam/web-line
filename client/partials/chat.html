@@ -1,4 +1,86 @@
 <template name="chat">
-  <h3 class="text-center">LINE</h3>
-  <h5 class="text-center text-muted">Sign in to join!</h5>
+  <div class="chat-wrapper">
+    <div class="chat-title">
+      <img src="http://7bna.net/images/picture/picture-37.jpg" width="60" height="60" class="img-circle">
+      {{#if Template.subscriptionsReady}}
+        {{room.name}}
+      {{/if}}
+    </div>
+    <div class="chat">
+      <div class="col-md-12">
+        {{#if Template.subscriptionsReady}}
+          {{#each message in messages}}
+            {{#if message.serverMsg}}
+              {{> serverText message=message}}
+            {{else}}
+              {{#if message.isMe}}
+                {{> sendText message=message}}
+              {{else}}
+                {{> recieveText message=message}}
+              {{/if}}
+            {{/if}}
+
+            {{#if eq message._id lastRead}}
+              <div class="last-read"></div>
+            {{/if}}
+          {{/each}}
+        {{else}}
+          <div class="col-xd-12 loading">
+            Loading...
+          </div>
+        {{/if}}
+        <!--{{> recieveText}} {{> sendText}} {{> recieveText}} {{> recieveText}} {{> sendText}}{{> sendText}}{{> sendText}}{{> sendText}}{{> sendText}}{{> sendText}}{{> sendText}}-->
+      </div>
+    </div>
+    <div class="answer-input">
+      <div class="col-md-12 answer">
+        <form class="form-inline send-form">
+          <input class="text-input" type="text" name="text" placeholder="Please enter a message">
+          <button class="btn sent-button" type="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+        </form>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="recieveText">
+  <div class="row com-text">
+    <div class="avartar-wrapper">
+      <img src="http://7bna.net/images/picture/picture-37.jpg" width="40" height="40" class="img-circle">
+    </div>
+    <div class="message-wrapper">
+      <div class="title">
+        {{message.owner}}
+      </div>
+      <div class="content">
+        <span class="textblock">{{message.body}}</span>
+        <span class="time">{{formatDate message.createAt}}</span>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="sendText">
+  <div class="row com-text send-text">
+    <div class="avartar-wrapper">
+      <img src="http://kingofwallpapers.com/picture/picture-018.jpg" width="40" height="40" class="img-circle">
+    </div>
+    <div class="message-wrapper">
+      <div class="title">
+        {{message.owner}}
+      </div>
+      <div class="content">
+        <span class="time">{{formatDate message.createAt}}</span>
+        <span class="textblock">{{message.body}}</span>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="serverText">
+  <div class="server-text">
+    <span class="">
+      {{message.body}}
+    </span>
+  </div>
 </template>
