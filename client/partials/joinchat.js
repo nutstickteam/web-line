@@ -14,6 +14,7 @@ Template.joinchat.helpers({
 
 Template.joinchat.events({
   'submit .join-form'(event, instance) {
+    console.log(event);
     // Prevent default browser form submit
     event.preventDefault();
 

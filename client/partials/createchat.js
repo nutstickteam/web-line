@@ -1,6 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
+import { Rooms } from '../../imports/api/rooms';
 import { Participants } from '../../imports/api/participants';
 
 import './chat.scss';
@@ -10,4 +11,30 @@ Template.createchat.onCreated(function chatOnCreated() {
 });
 
 Template.createchat.helpers({
+});
+
+Template.createchat.events({
+  'submit .create-form'(event, instance) {
+    // Prevent default browser form submit
+    event.preventDefault();
+
+    // Get value from form element
+    const target = event.target;
+    const text = target.name.value;
+
+    if (text === '')
+      return;
+    Rooms.insert({
+        name: text,
+		});
+    
+    $('#createChatModal').modal('hide');
+      Participants.insert({
+			user: Meteor.userId(),
+			room: text,
+			lastUpdate: new Date().getTime(),
+			lastRead: null,
+		});
+    target.name.value = '';
+  },
 });
