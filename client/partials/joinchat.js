@@ -3,6 +3,8 @@ import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
 import { Participants } from '../../imports/api/participants';
 
+import './joinchat.scss';
+import './joinchat.html';
 import './chat.scss';
 import './chat.html';
 
