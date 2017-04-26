@@ -1,0 +1,63 @@
+.create-chat-wrapper{
+    background-color: #FFF;
+    float: center;
+    width: 420px;
+    height: 180px;
+    position: absolute;
+}
+
+.header-wrap{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.container-compressed{
+    width: 70%;
+    height: 85%;
+    text-align: center;
+    align-content: center;
+    padding-top: 10px;
+    padding-bottom: 15px;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.title-chat{
+    text-align: center;
+}
+
+.input-wrap{
+    width: 80%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-top: 3px;
+    border-radius: 1px;
+}
+
+.ok-btn{
+    background-color: #2CCA3B;
+    color: #FFF;
+    border: none;
+    padding: 8px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-right: 3px;
+}
+.cancel-btn{
+    background-color: #636A84;
+    color: #FFF;
+    border: none;
+    padding: 8px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-left: 3px;
+}
+
+.btn-wrap{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}

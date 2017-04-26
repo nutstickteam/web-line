@@ -4,6 +4,7 @@ import './partials/joinchat.js';
 import './partials/chatlist.js';
 import './partials/chat.js';
 import '../imports/startup/accout-config';
+import './partials/createchat.js';
 
 Template.registerHelper('formatDate', function(date) {
   return moment(date).format('HH:mm');

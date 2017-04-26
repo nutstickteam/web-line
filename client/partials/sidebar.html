@@ -7,7 +7,8 @@
       <a href="/" data-text="Chats"><i class="fa fa-comment"></i></a>
     </li>
     <li class="menu">
-      <a href="/create" data-text="Create chat"><i class="fa fa-plus-circle"></i></a>
+      <a href="#" data-text="Create chat"><i class="fa fa-plus-circle"
+      data-toggle="modal" data-target="#createChatModal"></i></a>
     </li>
     <li class="menu mdi">
       <a href="/join" data-text="Join"><i class="mdi mdi-magnify"></i></a>
@@ -16,4 +17,16 @@
       <a href="#" data-text="Setting"><i class="mdi mdi-settings"></i></a>
     </li>
   </ul>
+
+  <!-- Modal -->
+<div id="createChatModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+         <!-- Modal content-->
+    <div class="modal-content">
+       <!--{{> createChat}}-->
+       {{> createchat}}
+    </div>
+    </div>
+</div>
+
 </template>
