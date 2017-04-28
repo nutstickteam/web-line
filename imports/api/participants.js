@@ -1,8 +1,15 @@
 import { Mongo } from 'meteor/mongo';
 import { Messages } from './messages';
+import { Rooms } from './rooms';
 
 export const Participants = new Mongo.Collection('participants');
 if (Meteor.isServer) {
+  Participants.before.insert((userId, doc) => {
+    return Rooms.findOne({
+      _id: doc.room,
+    });
+  });
+
   Participants.after.insert((userId, doc) => {
     Messages.insert({
       serverMsg: true,
@@ -16,7 +23,6 @@ if (Meteor.isServer) {
   });
 
   Participants.after.remove((userId, doc) => {
-    console.log('13213', userId, doc)
     Messages.insert({
       serverMsg: true,
       body: {

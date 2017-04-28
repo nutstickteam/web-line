@@ -23,12 +23,17 @@ Meteor.startup(() => {
     'insert': function (userId,doc) {
       /* user and doc checks ,
       return true to allow insert */
-      return true; 
+      return userId === doc.user; 
     },
     'update': function (userId,doc) {
       /* user and doc checks ,
       return true to allow insert */
       return true; 
+    },
+    'remove': function (userId,doc) {
+      /* user and doc checks ,
+      return true to allow insert */
+      return userId === doc.user; 
     },
   });
 

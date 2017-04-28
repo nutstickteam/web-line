@@ -23,6 +23,7 @@
   > .chat-title {
     font-size: 150%;
     padding: 25px 25px 10px;
+    box-shadow: 0px 1px 4px -1px rgba(173, 173, 173, 0.3);
     img {
       margin-right: 15px;
     }
@@ -169,4 +170,11 @@
     padding: 1rem;
     background-color: #ececec;
   }
+}
+
+.dropdown {
+  float: right;
+  color: #222;
+  font-family: "Open Sans", sans-serif;
+  font-size: 14px;
 }

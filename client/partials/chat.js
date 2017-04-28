@@ -19,8 +19,8 @@ scrollToBottom = function scrollToBottom (duration) {
 
 Template.chat.onCreated(function chatOnCreated() {
   var self = this;
+  this.lastRead = new ReactiveVar(null);
   self.autorun(function() {
-    this.lastRead = new ReactiveVar(null);
     self.subscribe('roomAndMessages', self.data.id);
     // console.log(Meteor.userId(),self.data.id,
     //   Participants.findOne({ user: Meteor.userId(), room: self.data.id })
@@ -37,7 +37,7 @@ Template.chat.onRendered(() => {
 
 Template.chat.helpers({
   lastRead() {
-    const lastReadState = Template.instance().lastRead.get();
+    const lastReadState = Template.instance().lastRead && Template.instance().lastRead.get();
     if (lastReadState) {
       return lastReadState
     }
@@ -57,7 +57,7 @@ Template.chat.helpers({
         // Meteor.users.findOne({_id: m.body.userId}, {fields: {username: 1}}).username;
         return {
           ...m,
-          body: `${username} ${m.body.action ? 'joins' : 'leaves'} chat.`,
+          body: `${username} ${m.body.action === 'join' ? 'joins' : 'leaves'} chat.`,
         };
       }
       return m;
@@ -68,11 +68,13 @@ Template.chat.helpers({
 
     setTimeout(() => scrollToBottom(250), 5);
     const p = Participants.findOne({ user: Meteor.userId(), room: Template.instance().data.id });
-    Participants.update(p._id, {
-      $set: {
-        lastRead: m[m.length - 1]._id,
-      },
-    });
+    if (p) {
+      Participants.update(p._id, {
+        $set: {
+          lastRead: m[m.length - 1]._id,
+        },
+      });
+    }
     return m;
   }
 });
@@ -98,4 +100,15 @@ Template.chat.events({
 
     target.text.value = '';
   },
+  'click .leave-btn'(event, instance) {
+    event.preventDefault();
+
+    console.log(Meteor.userId());
+
+    const p = Participants.findOne({ user: Meteor.userId(), room: Template.instance().data.id });
+    
+    Participants.remove(p._id);
+
+    FlowRouter.go('/');
+  }
 });

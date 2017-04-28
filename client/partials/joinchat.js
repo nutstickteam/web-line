@@ -2,6 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
 import { Participants } from '../../imports/api/participants';
+import { Rooms } from '../../imports/api/rooms';
 
 import './joinchat.scss';
 import './joinchat.html';
@@ -26,13 +27,16 @@ Template.joinchat.events({
 
     if (text === '')
       return;
-    console.log('p')
-    Participants.insert({
-			user: Meteor.userId(),
-			room: text,
-			lastUpdate: new Date().getTime(),
-			lastRead: null,
-		});
+
+    console.log(Meteor.userId(), text);
+    const p = Participants.insert({
+      user: Meteor.userId(),
+      room: text,
+      lastUpdate: new Date().getTime(),
+      lastRead: null,
+    });
+    console.log(p)
+    FlowRouter.go('/' + text);
 
     target.group.value = '';
   },

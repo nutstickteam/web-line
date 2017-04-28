@@ -1,7 +1,8 @@
 html, body {
   height: 100vh;
   overflow: hidden;
-  font-family: "Segoe UIt", "Segoe UI", Arial, sans-serif;
+  // font-family: "Segoe UI light", "Segoe UI", Arial, sans-serif;
+  font-family: 'Open Sans', sans-serif;
 }
 
 body #__blaze-root {
@@ -41,6 +42,8 @@ body #__blaze-root {
 
     > .menu {
       > a::after {
+        font-family: "Open Sans", sans-serif;
+        font-size: 16px;
         content: attr(data-text);
         padding-left: 1.5rem;
       }
@@ -64,7 +67,7 @@ body #__blaze-root {
     }
 
     > a {
-      display: block;
+      display: flex;
       width: 100%;
       padding: 1.5rem;
       line-height: 2rem;
