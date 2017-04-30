@@ -4,12 +4,6 @@ import { Rooms } from './rooms';
 
 export const Participants = new Mongo.Collection('participants');
 if (Meteor.isServer) {
-  Participants.before.insert((userId, doc) => {
-    return Rooms.findOne({
-      _id: doc.room,
-    });
-  });
-
   Participants.after.insert((userId, doc) => {
     Messages.insert({
       serverMsg: true,

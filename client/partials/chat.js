@@ -66,7 +66,7 @@ Template.chat.helpers({
       isMe: m.ownerId === Meteor.userId(),
     }));
 
-    setTimeout(() => scrollToBottom(250), 5);
+    setTimeout(() => scrollToBottom(250), 1);
     const p = Participants.findOne({ user: Meteor.userId(), room: Template.instance().data.id });
     if (p) {
       Participants.update(p._id, {
@@ -93,7 +93,6 @@ Template.chat.events({
 			ownerId: Meteor.userId(),
       body: text,
 			room: Template.instance().data.id,
-			createAt: new Date().getTime(),
 		});
 
     Participants.update

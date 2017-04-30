@@ -10,6 +10,10 @@ import './chat.scss';
 import './chat.html';
 
 Template.joinchat.onCreated(function chatOnCreated() {
+  var self = this;
+  self.autorun(function() {
+    self.subscribe('findrooms');
+  });
 });
 
 Template.joinchat.helpers({
@@ -28,15 +32,16 @@ Template.joinchat.events({
     if (text === '')
       return;
 
-    console.log(Meteor.userId(), text);
+    const room = Rooms.findOne({ name: text });
+    console.log(room);
     const p = Participants.insert({
       user: Meteor.userId(),
-      room: text,
+      room: room._id,
       lastUpdate: new Date().getTime(),
       lastRead: null,
     });
-    console.log(p)
-    FlowRouter.go('/' + text);
+
+    FlowRouter.go('/' + room._id);
 
     target.group.value = '';
   },

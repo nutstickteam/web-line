@@ -24,14 +24,14 @@ Template.createchat.events({
 
     if (text === '')
       return;
-    Rooms.insert({
+    const r = Rooms.insert({
         name: text,
 		});
     
     $('#createChatModal').modal('hide');
-      Participants.insert({
+    Participants.insert({
 			user: Meteor.userId(),
-			room: text,
+			room: r,
 			lastUpdate: new Date().getTime(),
 			lastRead: null,
 		});

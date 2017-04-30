@@ -19,6 +19,13 @@ Meteor.startup(() => {
     });
   }
 
+  Rooms.allow({
+    'insert': function (userId,doc) {
+      /* user and doc checks ,
+      return true to allow insert */
+      return true;
+    },
+  });
   Participants.allow({
     'insert': function (userId,doc) {
       /* user and doc checks ,
@@ -44,6 +51,10 @@ Meteor.startup(() => {
       return doc.serverMsg ? doc.body.userId === userId : doc.ownerId === userId;
     },
   });
+});
+
+Meteor.publish('findrooms', function() {
+  return Rooms.find();
 });
 
 Meteor.publish('rooms', function() {
